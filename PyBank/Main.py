@@ -2,8 +2,9 @@
 import os
 import csv
 
-#Create Input Path
+#Create Input Path and OutputPath
 pybank_csv = r"C:\Users\kamrk\RutgersDataScience\RUTJER201809DATA3\03-Python\Homework\Instructions\PyBank\Resources\budget_data.csv"
+output_path = r'C:\Users\kamrk\RutgersDataScience\Homework\Python-Challenge\PyBank'
 
 #declare variables
 monthcount = 0
@@ -53,14 +54,23 @@ average_change = revenue_change_sum / (monthcount - 1)
         
 
 
-#Print Results
-print("FINANCIAL ANALYSIS")
-print("---------------------------------")
-print(f'Total Months: {monthcount}')  
-print(f'Total: ${netamount}')
-print(f'Average Change: ${average_change}')
-print(f'Greatest Increase In Profit: {greatest_date} ${greatest_change}')
-print(f'Greatest Decrease In Profit: {least_date} ${least_change}')
+#Output Results
+output = (
+"FINANCIAL ANALYSIS\n"
+"---------------------------------\n"
+f'Total Months: {monthcount}\n'
+f'Total: ${netamount}\n'
+f'Average Change: ${average_change}\n'
+f'Greatest Increase In Profit: {greatest_date} ${greatest_change}\n'
+f'Greatest Decrease In Profit: {least_date} ${least_change}\n')
+
+#Print Output
+print(output)
+
+#Export to .txt File
+with open("PyBank_Results.txt","w") as txt_file:
+    txt_file.write(output)
+
 
 
     
