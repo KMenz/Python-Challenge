@@ -11,6 +11,7 @@ CandidateList = []
 CandidateVote = {}
 WinningCandidate = ""
 WinningVotes = 0
+Vote_Output = ""
 
 
 #Open and Read CSV
@@ -50,21 +51,26 @@ with open(input_path, newline = '') as csvfile:
 
 
         #Output For Votes
-        Vote_Output = f'{Candidate}: {Vote_Pct: .3f}% ({votes})\n'
+        Vote_Output += f"{Candidate}: {Vote_Pct: .3f}% ({votes})\n"
         
 
 
-#Final Output
-output = (
-f"ELECTION RESULTS\n"
-f"-----------------------\n"
-f"Total Votes: {TotalVotes}\n" 
-f"------------------------\n"
-f"{Vote_Output}\n"
-f"--------------------------\n"
-f"Winning Candidate: {WinningCandidate}\n")
+    #Final Output
+    output = (
+    f"ELECTION RESULTS\n"
+    f"-----------------------\n"
+    f"Total Votes: {TotalVotes}\n" 
+    f"------------------------\n"
+    f"{Vote_Output}\n"
+    f"--------------------------\n"
+    f"Winning Candidate: {WinningCandidate}\n")
 
-print(output)
+    print(output)
+
+
+#Export To Txt File
+with open('PyPollResults.txt','w') as txt_file:
+    txt_file.write(output)
 
 
 
